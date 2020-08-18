@@ -52,9 +52,9 @@
           scorePlayer = scorePlayer;
         } else if(result == "You win! Rock beats scissors" || result == "You win! Paper beats rock" || result == "You win! Scissors beats paper") {
             scorePlayer++;
-          } else {
+        } else {
             scoreComputer++;
-          }
+        }
       }
       if(scorePlayer > scoreComputer) {
         console.log("You win! Score: " + scorePlayer + "-" + scoreComputer);

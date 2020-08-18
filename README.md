@@ -5,3 +5,4 @@ This repo houses all my projects from the Odin Project course.
 Project List:
 
 -Google Homepage
+-Rock, Paper, Scissors

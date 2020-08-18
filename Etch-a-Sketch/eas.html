@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        html {
+            height: 90vh;
+            width: 100vh;
+            margin: 0 auto;
+            padding: 0;
+        }
+        #container {
+            height: 500px;
+            width: 500px;
+            margin: 10px;
+            border-color: red;
+        }
+        #clearButton {
+            height: 100px;
+            width: 200px;
+            color: red;
+            background-color: blue;
+        }
+    </style>
+    <head>
+        <title>Etch-a-Sketch</title>
+    </head>
+
+    <body>
+        <button id="clearButton">Clear Grid</button>
+        <div id="container"></div>
+        <script>
+            function clearArr(arr, squares) {
+                for(let i=0; i < squares*squares; i++) {
+                    arr.pop();
+                }
+            }
+
+
+            let squares = prompt("How many squares per side? ");
+            const container = document.querySelector("#container");
+            container.setAttribute("style", "display: grid; grid-template-rows: repeat(" + squares + ", minmax(1px, 1fr)); grid-template-columns: repeat(" + squares + ", minmax(1px, 1fr));"); 
+            let i, j;
+            let arr = [];
+            for(i=1; i <= squares; i++) {
+                for(j=1; j <= squares; j++) {
+                    const d = document.createElement("div");
+                    d.classList.add("box" + i + "-" + j);
+                    d.style.backgroundColor = "white";
+                    d.textContent = "";
+                    d.style.height = "auto";
+                    d.style.width = "auto";
+                    d.style.margin = "1px";
+                    d.style.borderColor = "red";
+                    d.addEventListener("mouseover", function(event) {
+                        event.target.style.backgroundColor = "blue";
+                    });
+                    arr.push(d);
+                    container.appendChild(d);
+                }
+            }
+            const clearButton = document.querySelector("#clearButton");
+            clearButton.addEventListener("click", function(event) {
+                for(let k=0; k < squares*squares; k++) {
+                    container.removeChild(arr[k]);
+                }
+                clearArr(arr, squares);
+                squares = prompt("How many squares per side? ");
+                container.setAttribute("style", "display: grid; grid-template-rows: repeat(" + squares + ", minmax(1px, 1fr)); grid-template-columns: repeat(" + squares + ", minmax(1px,1fr));"); 
+                for(i=1; i <= squares; i++) {
+                    for(j=1; j <= squares; j++) {
+                        const d = document.createElement("div");
+                        d.classList.add("box" + i + "-" + j);
+                        d.style.backgroundColor = "white";
+                        d.textContent = "";
+                        d.style.height = "auto";
+                        d.style.width = "auto";
+                        d.style.margin = "1px";
+                        d.style.borderColor = "red";
+                        d.addEventListener("mouseover", function(event) {
+                            event.target.style.backgroundColor = "blue";
+                        });
+                        arr.push(d);
+                        container.appendChild(d);
+                    }
+                }
+            });
+
+        </script>
+    </body>
+
+    <footer></footer>
+
+</html>
