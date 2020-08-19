@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        
+        head {
+            margin: auto;
+        }
+
+        body {
+            background: linear-gradient(90deg, lightblue, darkblue);
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(2, 34, 3);
+            font-weight: bold;
+        }
+
+        #calc-body {
+            margin: auto;
+            background-color: rgb(94, 243, 94);
+            height: 600px;
+            width: 500px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-areas: 
+                "display display display display display"
+                "num9 num8 num7 clear clear"
+                "num6 num5 num4 add sub"
+                "num3 num2 num1 mult div"
+                "num0 num0 eq eq eq";
+            grid-gap: 10px;
+            padding: 10px;
+            border: thick solid black;
+        }
+
+        button {
+            background-color: rgb(134, 134, 238);
+            border-radius: 50%;
+            font-size: 200%;
+            font-family:Verdana, Tahoma, sans-serif;
+            font-weight: bold;
+            border-color: black;
+        }
+
+        .clear {
+            background-color: bisque;
+        }
+
+        .add, .sub, .mult, .div {
+            background-color: brown;
+        }
+
+        .eq {
+            background-color: coral;
+        }
+
+        .display {
+            background-color: lightgray;
+            border: thick solid black;
+            border-radius: 20%;
+            justify-content:right;
+            display: grid;
+            grid-template-columns: 16fr 1fr;
+            grid-template-areas: ". text";
+        }
+
+        .disp-text {
+            color: black;
+            font-size: 50px;
+            align-self: center;
+            grid-area: text;
+        }
+
+    </style>
+    
+    <head>
+        <title>Calculator</title>
+        <h1>Let me calculate something for you!</h1>
+    </head>
+    
+    <body>
+        <div id="calc-body">
+            <div class="display" style="grid-area: display">
+                <h2 class="disp-text"></h2>
+            </div>
+            <button class="num9" style="grid-area: num9">9</button>
+            <button class="num8" style="grid-area: num8">8</button>
+            <button class="num7" style="grid-area: num7">7</button>
+            <button class="num6" style="grid-area: num6">6</button>
+            <button class="num5" style="grid-area: num5">5</button>
+            <button class="num4" style="grid-area: num4">4</button>
+            <button class="num3" style="grid-area: num3">3</button>
+            <button class="num2" style="grid-area: num2">2</button>
+            <button class="num1" style="grid-area: num1">1</button>
+            <button class="num0" style="grid-area: num0">0</button>
+            <button class="clear" style="grid-area: clear">Clear</button>
+            <button class="add" style="grid-area: add">+</button>
+            <button class="sub" style="grid-area: sub">-</button>
+            <button class="mult" style="grid-area: mult">x</button>
+            <button class="div" style="grid-area: div">/</button>
+            <button class="eq" style="grid-area: eq">=</button>
+        </div>
+
+        <script>
+            
+            //THIS AREA FOR GLOBALS
+            let n1 = 0;
+            let n2 = 0;
+            let op = "";
+            let lastOp = ""; 
+            let eq_pressed = false;
+            let disp = document.querySelector(".disp-text");
+            let num9 = document.querySelector(".num9");
+            let num8 = document.querySelector(".num8");
+            let num7 = document.querySelector(".num7");
+            let num6 = document.querySelector(".num6");
+            let num5 = document.querySelector(".num5");
+            let num4 = document.querySelector(".num4");
+            let num3 = document.querySelector(".num3");
+            let num2 = document.querySelector(".num2");
+            let num1 = document.querySelector(".num1");
+            let num0 = document.querySelector(".num0");
+            let plus = document.querySelector(".add");
+            let minus = document.querySelector(".sub");
+            let multiply = document.querySelector(".mult");
+            let divide = document.querySelector(".div");
+            let eq = document.querySelector(".eq");
+            let clear = document.querySelector(".clear");
+
+            // THIS AREA FOR FUNCTIONS
+            function add(num1, num2) {
+                return num1 + num2;
+            }
+
+            function sub(num1, num2) {
+                return num1 - num2;
+            }
+
+            function mult(num1, num2) {
+                return num1 * num2;
+            }
+
+            function div(num1, num2) {
+                return num1 / num2;
+            }
+
+            function operate(num1, num2, op) {
+                if(op == "+") {
+                    return add(num1, num2);
+                } else if(op == "-") {
+                    return sub(num1, num2);
+                } else if(op == "x") {
+                    return mult(num1, num2);
+                } else {
+                    if(num2 == 0) {
+                        return "NO NO NO...";
+                    } else {
+                        return div(num1, num2);
+                    }
+                }
+            }            
+
+            function display(num1, num2, op) {
+                if(op == "") {
+                    disp.textContent = n1 + "";
+                    n2 = 0;
+                } else {
+                    let res = operate(n1, n2, op);
+                    if(res == "NO NO NO...") {
+                        disp.textContent = "PLEASE DON'T DO THAT!";
+                        n1 = 0;
+                        n2 = 0;
+                    } else {
+                        n1 = res;
+                        disp.textContent = res + "";
+                        n2 = 0;
+                    }
+                }
+            }
+
+            //THIS AREA FOR LISTENERS
+            num9.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 9;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 9;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 9;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            num8.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 8;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 8;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 8;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            num7.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 7;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 7;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 7;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+            
+            num6.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 6;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 6;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 6;
+                    disp.textContent = n2 + "";
+                    
+                }
+                eq_pressed = false;
+            });
+
+            num5.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 5;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 5;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 5;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            num4.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 4;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 4;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 4;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            num3.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 3;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 3;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 3;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            num2.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 2;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 2;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 2;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            num1.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 1;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 1;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 1;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            num0.addEventListener("click", function(e) {
+                if(op == "") {
+                    if(eq_pressed) {
+                        n1 = 0;
+                        disp.textContent = n1 + "";
+                    } else {
+                        n1 = (n1 * 10) + 0;
+                        disp.textContent = n1 + "";
+                    }
+                    
+                } else {
+                    n2 = (n2 * 10) + 0;
+                    disp.textContent = n2 + "";
+                }
+                eq_pressed = false;
+            });
+
+            clear.addEventListener("click", function(e) {
+                n1 = 0;
+                n2 = 0;
+                op = "";
+                eq_pressed = false;
+                disp.textContent = n1 + "";
+            });
+
+            plus.addEventListener("click", function(e) {
+                display(n1, n2, op);
+                op = "+";
+                eq_pressed = false;
+            });
+
+            minus.addEventListener("click", function(e) {
+                display(n1, n2, op);
+                op = "-";
+                eq_pressed = false;
+            });
+
+            multiply.addEventListener("click", function(e) {
+                display(n1, n2, op);
+                op = "x";
+                eq_pressed = false;
+            });
+
+            divide.addEventListener("click", function(e) {
+                display(n1, n2, op);
+                op = "/";
+                eq_pressed = false;
+            });
+
+            eq.addEventListener("click", function(e) {
+                eq_pressed = true;
+                display(n1, n2, op);
+                op = "";
+            });
+
+            //THIS AREA FOR MAIN/CONTROLLER
+            function main() {
+                disp.textContent = "0";
+            }
+
+            main();
+
+        </script>
+    </body>
+
+</html>
