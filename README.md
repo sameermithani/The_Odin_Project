@@ -6,3 +6,5 @@ Project List:
 
 -Google Homepage
 -Rock, Paper, Scissors
+-Etch-a-Sketch
+-Calculator
