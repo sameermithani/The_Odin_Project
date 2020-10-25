@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+    <style>
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #root {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: aqua;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #title {
+            margin-top: 0px;
+            font-family: cursive;
+            font-variant: small-caps;
+            font-weight: bold;
+        }
+
+        #board {
+            height: 600px;
+            width: 600px;
+            background-color: khaki;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #reset {
+            margin-top: 30px;
+            background-color: red;
+            height: 100px;
+            width: 150px;
+            font-size: xx-large;
+            font-family: fantasy;
+            font-weight: bold;
+            border-radius: 12px;
+            border: 5px solid blue;
+            transition-duration: 0.4s;
+        }
+
+        #reset:hover {
+            background-color: blue;
+        }
+
+        .block {
+            transition-duration: 0.2s;
+        }
+
+        .block:hover {
+            background-color: brown;
+        }
+
+    </style>
+
+    <head>
+        <title>Tic-Tac-Toe</title>
+    </head>
+
+    <body>
+        <div id="root">
+            <h1 id="title">Welcome to Tic-Tac-Toe!</h1>
+            <h2 id="score"></h2>
+            <div id="board"></div>
+            <button class="buttons" id="reset">RESET</button>
+        </div>
+        <script>
+            const container = document.querySelector("#root");
+            const blocks = []
+
+            function init_game_board() {
+                const board = document.querySelector("#board");
+                let player1 = 0;
+                let player2 = 0;
+
+                for(let i=0; i<9; i++) {
+                    const block = document.createElement('div');
+                    block.setAttribute('class', 'block');
+                    block.setAttribute('style', 'height: 196px; width: 196px; border: 2px solid brown;');
+                    block.className = "block";
+                    blocks[i] = block;
+                    board.appendChild(block);
+                }
+
+                const score = document.querySelector("#score")
+                score.textContent = "Score: " + player1 + " : " + player2
+
+            }
+
+            init_game_board();
+
+        </script>
+    </body>
+
+</html>
