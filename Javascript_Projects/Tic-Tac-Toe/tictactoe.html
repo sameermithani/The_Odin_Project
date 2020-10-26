@@ -55,10 +55,25 @@
 
         .block {
             transition-duration: 0.2s;
+            height: 196px; 
+            width: 196px; 
+            border: 2px solid brown; 
+            align-items: center; 
+            justify-content: center; 
+            display: flex;
         }
 
         .block:hover {
             background-color: brown;
+        }
+
+        .symbol {
+            color: brown; 
+            font-family: cursive; 
+            font-variant: small-caps; 
+            font-weight: bold; 
+            font-size: 100px; 
+            align-self: space-between;
         }
 
     </style>
@@ -71,33 +86,139 @@
         <div id="root">
             <h1 id="title">Welcome to Tic-Tac-Toe!</h1>
             <h2 id="score"></h2>
-            <div id="board"></div>
+            <div id="board">
+                <div id="0" class="block"></div>
+                <div id="1" class="block"></div>
+                <div id="2" class="block"></div>
+                <div id="3" class="block"></div>
+                <div id="4" class="block"></div>
+                <div id="5" class="block"></div>
+                <div id="6" class="block"></div>
+                <div id="7" class="block"></div>
+                <div id="8" class="block"></div>
+            </div>
             <button class="buttons" id="reset">RESET</button>
         </div>
         <script>
             const container = document.querySelector("#root");
-            const blocks = []
+            const score_text = document.querySelector("#score");
+
+            let state = [null, null, null,
+                         null, null, null, 
+                         null, null, null];
+
+            let player = "X";
 
             function init_game_board() {
                 const board = document.querySelector("#board");
-                let player1 = 0;
-                let player2 = 0;
+                state = [null, null, null,
+                         null, null, null, 
+                         null, null, null];
 
+                
                 for(let i=0; i<9; i++) {
-                    const block = document.createElement('div');
-                    block.setAttribute('class', 'block');
-                    block.setAttribute('style', 'height: 196px; width: 196px; border: 2px solid brown;');
-                    block.className = "block";
-                    blocks[i] = block;
-                    board.appendChild(block);
+                    const block = document.getElementById("" + i);
+                    const play_text = document.createElement("h1");
+                    play_text.textContent = "";
+                    play_text.className = "symbol";
+                    block.appendChild(play_text);
                 }
 
-                const score = document.querySelector("#score")
-                score.textContent = "Score: " + player1 + " : " + player2
+                
+
+
+                player = "X";
 
             }
+            
+            function on_reset() {
+                state = [null, null, null,
+                         null, null, null, 
+                         null, null, null];
 
-            init_game_board();
+                for(let i=0; i<9; i++) {
+                    const block = document.getElementById("" + i);
+                    block.children[0].textContent = "";    
+                }
+                player = "X";
+            }
+
+            for(let i=0; i<9; i++) {
+                const block = document.getElementById("" + i);
+                const scoreboard = document.querySelector("#score");
+                block.addEventListener("click", function(e) {
+                    if(isValidMove(i)) {
+                        block.children[0].textContent = player;
+                        state[i] = player;
+                        if(check_for_winner()) {
+                            scoreboard.textContent = "Player " + player + " won!";
+                            on_reset();
+                        } else if(check_for_tie()) {
+                            scoreboard.textContent = "It's a tie!";
+                            on_reset();
+                        }   
+                        if(player == "X") {
+                            player = "O";
+                        } else {
+                            player = "X";
+                        }
+                        
+                    } else {
+                        alert("Can't do that!");
+                    }
+                    
+                });
+            } 
+                       
+            const reset = document.querySelector("#reset");
+            reset.addEventListener("click", function(e) {
+                on_reset();
+            });
+
+            function check_for_winner() {
+                console.log(state);
+                //horizontal
+                if( ( (state[0] == state[1] && state[0] == state[2]) && (state[0] != null && state[1] != null && state[2] != null) ) || 
+                    ( (state[3] == state[4] && state[3] == state[5]) && (state[3] != null && state[4] != null && state[5] != null) ) || 
+                    ( (state[6] == state[7] && state[6] == state[8]) && (state[6] != null && state[7] != null && state[8] != null) ) ) {
+                        return true;
+                } 
+
+                //vertical
+                if( ( (state[0] == state[3] && state[0] == state[6]) && (state[0] != null && state[3] != null && state[6] != null) ) || 
+                    ( (state[1] == state[4] && state[1] == state[7]) && (state[1] != null && state[4] != null && state[7] != null) ) || 
+                    ( (state[2] == state[5] && state[2] == state[8]) && (state[2] != null && state[5] != null && state[8] != null) ) )  {
+                        return true;
+                }
+
+                //diagonal
+                if( ( (state[0] == state[4] && state[0] == state[8]) && (state[0] != null && state[4] != null && state[8] != null) ) || 
+                    ( (state[2] == state[4] && state[2] == state[6]) && (state[2] != null && state[4] != null && state[8] != null) ) ) {
+                        return true;
+                }
+
+                return false;
+            }
+
+            function check_for_tie() {
+                for(let i=0; i<9; i++) {
+                    if(state[i] == null) {
+                        return false;
+                    }
+                }
+
+                if(!check_for_winner()) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            function isValidMove(move) {
+                return state[move] == null; 
+            }
+
+            init_game_board();            
 
         </script>
     </body>
