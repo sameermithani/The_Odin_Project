@@ -1,0 +1,16 @@
+#tabs {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.tabButton {
+    font-size: 20px; 
+    font-weight: bold; 
+    padding: 15px 20px;
+    margin: 20px;
+    background-color: lightblue; 
+}
+
+
