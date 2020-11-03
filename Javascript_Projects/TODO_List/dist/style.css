@@ -1,0 +1,453 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+#content {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: auto;
+    position: relative;
+    background-image: url('./background.jpg');
+    background-size: auto;
+    
+}
+
+.side-panel {
+    height: 80%;
+    width: 10%;
+    background-color: #c8a165;
+    justify-self: center;
+    border-radius: 25px 0% 0% 25px;
+    border-right: solid 2px #461f00;
+    border-left: solid 5px #461f00;
+    border-top: solid 5px #461f00;
+    /* border-bottom: solid 10px #461f00; */
+    box-shadow: 15px 15px 8px #461f00;
+    margin-top: 5%;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#project-title {
+    background-color: khaki;
+    border-top-left-radius: 10%;
+    color:  #c8a165;
+    margin-top: 0px;
+    text-align: center;
+    font-weight: bolder;
+    font-family: cursive;
+    height: 10%;
+    line-height: 2;
+}
+
+#project-button {
+    margin-top: 5%;
+    margin-left: 23%;
+    margin-right: 23%;
+    padding: 5%;
+    font-family: cursive;
+    font-weight: bold;
+    background-color:  #c8a165;
+    color: khaki;
+    border-radius: 25px;
+    border: 3px solid #461f00;
+}
+
+#project-button:hover {
+    background-color: khaki;
+    color:  #c8a165;
+}
+
+#projects-section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border-top: 2px solid #461f00;
+    margin-top: 5%;
+    
+}
+
+.project-tab {
+    color: khaki;
+    background-color:  #c8a165;
+    font-weight: bold;
+    font-family: cursive;
+    text-align: center;
+    border-bottom: 2px solid #461f00;
+    margin: 0;
+}
+
+#project-del {
+    height: auto;
+    width: auto;
+    margin-top: auto;
+    color: khaki;
+    background-color:  #c8a165;
+    border-radius: 25px;
+}
+
+#project-del:hover {
+    color: #c8a165;
+    background-color: khaki;
+}
+
+/* .project-tab:hover {
+    color:  #c8a165;
+    background-color: khaki;
+} */
+
+.mid-panel {
+    display: flex;
+    flex-direction: column;
+    background-color:  #c8a165;
+    height: 80%;
+    width: 30%;
+    margin-top: 5%;
+    border-right: solid 5px #461f00;
+    border-top: solid 5px #461f00;
+    /* border-bottom: solid 10px #461f00; */
+    border-radius: 0% 25px 25px 0%;
+    box-shadow: 15px 15px 8px #461f00;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+#mid-title {
+    background-color: khaki;
+    height: 10%;
+    margin: 0px;
+    font-family: cursive;
+    font-weight: bolder;
+    text-align: center;
+    color:  #c8a165;
+    line-height: 2;
+}
+
+.mid-task-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1%;
+    
+}
+
+.task-form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.title-enter {
+    background-color: #e6bf83;
+    width: 15%;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 25px;
+    font-weight: lighter;
+    font-family: cursive;
+    font-size: smaller;
+    padding-left: 2%;
+}
+
+.desc-enter {
+    background-color: #e6bf83;
+    width: 25%;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 25px;
+    font-weight: lighter;
+    font-family: cursive;
+    font-size: smaller;
+    padding-left: 2%;
+}
+
+.date-enter {
+    background-color: #e6bf83;
+    width: 20%;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 25px;
+    font-weight: lighter;
+    font-family: cursive;
+    font-size: smaller;
+    padding-left: 2%;
+}
+
+.priority-enter {
+    background-color: #e6bf83;
+    width: 10%;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 25px;
+    font-weight: lighter;
+    font-family: cursive;
+    font-size: smaller;
+    padding-left: 2%;
+}
+
+label {
+    font-weight: bold;
+    font-family: cursive;
+    font-size: small;
+    color: khaki;
+}
+
+#priority-label {
+    line-height: 3;
+}
+
+.task-add-button {
+    font-family: cursive;
+    font-size: x-large;
+    font-weight: bold;
+    margin: auto;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    background-color:  #c8a165;
+    color: khaki;
+    text-align: center;
+    height: 100%;
+    width: 5%;
+    margin-right: 5px;
+    border-radius: 25px;
+}
+
+.task-add-button:hover {
+    background-color: khaki;
+    color:  #c8a165;
+}
+
+.mid-task-block {
+    display: flex;
+    height: auto;
+    width: auto;
+}
+
+.todo-whole-block {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    margin-top: 5%;
+}
+
+
+.edit-button {
+    margin-left: 25%;
+    margin-top: 16%;
+    margin-right: 2%;
+    height: auto;
+    width: auto;
+    background-color:  #c8a165;
+    font-family: cursive;
+    font-weight: bold;
+    color: khaki;
+    border-radius: 30%;
+}
+
+.edit-button:hover {
+    background-color: khaki;
+    color:  #c8a165;
+}
+
+.del-button {
+    margin-top: 16%;
+    margin-right: 2%;
+    height: auto;
+    width: auto;
+    background-color:  #c8a165;
+    font-family: cursive;
+    font-weight: bold;
+    color: khaki;
+    border-radius: 30%;
+}
+
+.del-button:hover {
+    background-color: khaki;
+    color:  #c8a165;
+}
+
+.todo-block {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15%;
+    border: 4px solid #461f00;
+    height: 100%;
+    width: 500px;
+    justify-content: flex-start;
+    align-content: center;
+    background-color: #e6bf83;
+    margin: 2%;
+}
+
+.item-title {
+    font-size: xx-large;
+    font-weight: bold;
+    color:  khaki;
+    margin: 1px auto 2px auto;
+}
+
+.item-desc {
+    font-size: medium;
+    color: khaki;
+    margin-left: 5%;
+    margin-bottom: 1px;
+}
+
+.item-priority {
+    font-size: medium;
+    color: khaki;
+    margin-left: 5%;
+    margin-bottom: 1px;
+}
+
+.item-duedate {
+    font-size: medium;
+    color: khaki;
+    margin-left: 5%;
+}
+
+.popup {
+    position: absolute;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    background-color: khaki;
+    height: 20%;
+    width: 500px;
+    border-radius: 25px;
+    border: auto solid #461f00;
+}
+
+.popup-exit {
+    background-color: transparent;
+    color:  #c8a165;
+    height: 30px;
+    width: 30px;
+    border-radius: 25px 0 0 0;
+    border: 1px solid  #c8a165;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.popup-exit:hover {
+    background-color:  #c8a165;
+    color: khaki;
+}
+
+#project-popup-button {
+    margin-bottom: 0px;
+    margin-top: auto;
+    height: 50px;
+    background-color:  #c8a165;
+    color: khaki;
+    font-size: x-large;
+    font-family: cursive;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+#project-popup-button:hover {
+    background-color: khaki;
+    color:  #c8a165;
+}
+
+.popup-text {
+    border-radius: 25px;
+    background-color: #e6bf83;
+    padding-left: 10px;
+    font-size: large;
+    font-weight: lighter;
+    font-family: cursive;
+}
+
+#project-text {
+    margin-top: 5%;
+    height: 50px;
+}
+
+#edit-popup {
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    background-color: khaki;
+    height: auto;
+    width: 500px;
+    border-radius: 25px;
+    border: 2px solid #461f00;
+}
+
+.edit-title {
+    border-radius: 25px;
+    background-color: #e6bf83;
+    padding-left: 10px;
+    font-size: large;
+    font-weight: lighter;
+    font-family: cursive;
+    margin: 5%;
+    width: 80%;
+}
+
+.edit-desc {
+    height: 100px;
+    width: 80%;
+    border-radius: 25px;
+    background-color: #e6bf83;
+    padding-left: 10px;
+    font-size: large;
+    font-weight: lighter;
+    font-family: cursive;
+    margin: 5%;
+}
+
+.priority-edit {
+    background-color: #e6bf83;
+    width: 15%;
+    margin: 5%;
+    border-radius: 25px;
+    font-weight: lighter;
+    font-family: cursive;
+    font-size: smaller;
+    padding-left: 2%;
+}
+
+.date-edit {
+    background-color: #e6bf83;
+    width: 30%;
+    margin: 5%;
+    border-radius: 25px;
+    font-weight: lighter;
+    font-family: cursive;
+    font-size: smaller;
+    padding-left: 2%;
+}
+
+.popup-button {
+    margin-bottom: 0px;
+    margin-top: auto;
+    height: 50px;
+    background-color:  #c8a165;
+    color: khaki;
+    font-size: x-large;
+    font-family: cursive;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.popup-button:hover {
+    background-color: khaki;
+    color:  #c8a165;
+}

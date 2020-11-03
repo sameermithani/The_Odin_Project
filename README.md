@@ -11,3 +11,9 @@ Project List:
 -Etch-a-Sketch
 
 -Calculator
+
+-Tic-Tac-Toe
+
+-Restaurant Page
+
+-TODO List
