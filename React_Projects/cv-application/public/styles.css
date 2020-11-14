@@ -1,0 +1,178 @@
+#root {
+    background-image: url("skyimage.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#main {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+    padding: 20px;
+    height: auto;
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+#show-hide-button {
+    margin-top: auto;
+}
+
+.h-line {
+    width: 100%;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+#header {
+    text-align: center;
+    justify-self: center;
+}
+
+.buttons {
+    height: 50px;
+    width: auto;
+    font-size: larger;
+    margin-top: 10px;
+    display: block;
+}
+
+input {
+    margin: 5px;
+}
+
+#general-address {
+    width: 250px;
+}
+
+#general-summary {
+    height: 200px;
+    width: 400px;
+    justify-self: left;
+}
+
+#general-submit {
+    width: 850px;
+}
+
+#address-text {
+    margin-top: -20px;
+}
+
+#phone-email-text {
+    margin-top: -15px;
+}
+
+#summary-text {
+    margin-top: -8px;
+}
+
+.education-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.school-info {
+    flex-direction: row;
+}
+
+.school-name {
+    padding-bottom: 0%;
+}
+
+.school-dates {
+    align-self: center;
+    margin-left: auto;
+}
+
+.degree-info {
+    padding-top: 0;
+    margin-top: -20px;
+}
+
+#education-display {
+    margin-top: -30px;
+}
+
+#education-add-button {
+    margin-top: 40px;
+    width: 100%;
+}
+
+#education-del-button {
+    width: 120px;
+    margin-top: -10px;
+}
+
+#education-cancel {
+    margin: 10px;
+}
+
+.experience-info {
+    margin-top: -20px;
+    justify-content: left;
+    align-content: center;
+}
+
+.experience-location-display {
+    align-self: center;
+    margin-left: 3px;
+}
+
+.experience-date-display {
+    align-self: center;
+    margin-left: auto;
+}
+
+#experience-add-button {
+    width: 100%;
+}
+
+.textareas {
+    width: 300px;
+    height: 200px;
+}
+
+.skill-item {
+    align-content: center;
+    justify-content: left;
+}
+
+#skills-del-button {
+    align-self: center;
+    font-size: x-small;
+    margin-left: auto;
+    height: auto;
+    width: auto;
+    margin-top: auto;
+}
+
+#skills-add-button {
+    width: 100%;
+}
+
+.skill-item {
+    margin-top: auto;
+}
+
+#skill-ul {
+    margin-top: -8px;
+}
