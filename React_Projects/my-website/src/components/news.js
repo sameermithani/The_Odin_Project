@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function News() {
 
@@ -18,10 +18,13 @@ function News() {
             })
     }
 
+    useEffect(() => {
+        getNews();
+    }, []);
+
     return (
         <div className='news-main' style={{textAlign: 'center'}}>
-            <h1>Top Stories</h1>
-            <button onClick={getNews}>Refresh</button>
+            <h1 style={{marginLeft: 'auto', marginRight: 'auto', fontFamily: 'cursive'}}>Top Stories</h1>
             <div className='news-container'>
                 <ul className='news-stories'>
                     {articles.map((val, idx) => {
@@ -37,13 +40,13 @@ function News() {
                                         />
                                         <p style={{fontWeight:'bold', textDecoration:'underline', color: 'black'}}>{val['title']}</p>
                                     </a>
-                                    
                                 </li>
                             </div>
                         );
                     })}
                 </ul>
             </div>
+            <button onClick={getNews} style={{margin: '30px auto'}}>Refresh</button>
         </div>
     );
 }

@@ -1,11 +1,16 @@
-html {
+html, body {
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-  height: 90%;
-  width: 100%;
+footer {
+  height: fit-content;
+  padding: 1px;
+  margin: auto;
+  background-color:#0275d8;
+  color: white;
 }
 
 #weather-main {
@@ -24,33 +29,40 @@ body {
 }
 
 .main-center {
-  height: auto;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  margin-top: 0;
+  background-color: lightblue;
+  overflow-y: auto;
 }
 
 .side-comp {
-  height: fit-content;
-  width: fit-content;
+  height: 100%;
+  width: 15%;
   margin-left: 20px;
   margin-right: auto;
   text-align: center;
+  padding-top: 10px;
 }
 
 .news-comp {
-  height: auto;
-  width: 1000px;
+  height: 100vh;
+  width: 60%;
   margin: auto;
+  padding-top: 10px;
+  box-shadow: inset 0 0 10px #000000;
+  /* overflow-y: scroll; */
 }
 
 .weather-comp {
   height: fit-content;
-  width: fit-content;
+  width: 25%;
   margin-left: auto;
   margin-right: 20px;
   text-align: center;
+  padding-top: 10px;
 }
 
 .weather-text {
@@ -174,12 +186,15 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   list-style-type: none;
+  margin: auto;
+  height: 80vh;
+  overflow-y: scroll;
 }
 
 .story {
   height: 300px;
   width: 300px;
-  margin: 5px 5px 5px 5px;
+  margin: 10px auto 30px auto;
 }
 
 .story:hover {

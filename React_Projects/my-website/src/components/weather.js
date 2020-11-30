@@ -4,15 +4,18 @@ function Weather(props) {
     
     const base = 'https://api.openweathermap.org/data/2.5/weather?';
     const api_key = process.env.REACT_APP_WEATHER_API_KEY;
-    //const api_key = 'e97ca64b41a22a2520d542558878efc8';
 
-    const [query, setQuery] = useState('');
-    const [prevQuery, setprevQuery] = useState('');
+    const [query, setQuery] = useState('dallas');
     const [weather, setWeather] = useState('');
     const [unit, setUnit] = useState('metric');
     const [tempType, settempType] = useState('C');
-    const [backgroundURL, setBackgroundURL] = useState('Cloudy.jpg');
+    const [backgroundURL, setBackgroundURL] = useState('Clear.jpg');
     const [temp, setTemp] = useState(0);
+
+
+    useEffect(() => {
+        fetchAPI();
+    }, []);
 
 
     const search = evt => {
@@ -26,9 +29,18 @@ function Weather(props) {
             .then(res => res.json())
             .then(data => {
                 setWeather(data);
-                setprevQuery(query);
                 setQuery('');
                 setTemp(Math.round(data.main.temp));
+                let weatherType = data['weather'][0]['main'];
+                if(weatherType == 'Mist' || weatherType == 'Smoke' ||
+                   weatherType == 'Haze' || weatherType == 'Dust' ||
+                   weatherType == 'Fog' || weatherType == 'Sand' ||
+                   weatherType == 'Ash' || weatherType == 'Squall' ||
+                   weatherType == 'Tornado') {
+                    setBackgroundURL('Poor.jpg');
+                } else {
+                    setBackgroundURL(`${data['weather'][0]['main']}.jpg`);
+                }
                 console.log(data);
         });       
     }
@@ -60,7 +72,7 @@ function Weather(props) {
     }
 
     return (
-        <div id='weather-main' style={{backgroundImage: 'url('+backgroundURL+')'}}>
+        <div id='weather-main' style={{backgroundImage: `url(${backgroundURL})`}}>
             <div className='search-box'>
                 <input
                     placeholder='Search City'

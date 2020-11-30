@@ -21,11 +21,13 @@ function App() {
           <News />
         </div>
         <div className='weather-comp'>
-          <h1>Weather</h1>
+          <h1 style={{fontFamily: 'cursive'}}>Weather</h1>
           <Weather />
         </div>
       </div>
-      
+      <footer>
+        <p style={{marginTop: 'auto', verticalAlign: 'text-bottom'}}>Created by Sameer Mithani</p>
+      </footer>
     </div>
   );
   

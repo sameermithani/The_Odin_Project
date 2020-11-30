@@ -10,7 +10,7 @@ class NavBar extends Component {
 
         return (
             <div id='navbar-main'>
-                <Navbar bg="light" expand="lg">
+                <Navbar bg="primary" variant='dark' expand="lg">
                     <Navbar.Brand href="#home">Welcome!</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
