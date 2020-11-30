@@ -1,6 +1,6 @@
 import React from "react";
 
-const Side = () => {
+const Side = (props) => {
     return (
         <div className='side-container'>
             <h1 style={{fontFamily: 'cursive'}}>Cool Links</h1>
@@ -18,7 +18,7 @@ const Side = () => {
                 </span>
                 <span className='funny-links' style={{display: 'flex', flexDirection: 'column', marginBottom: '20px'}}>
                     <h4>Funny and Fascinating</h4>
-                    <a href='https://www.cleverbot.com/' target='_blank'> Cleverbot</a>
+                    <a href='https://www.cleverbot.com/' target='_blank'>Cleverbot</a>
                     <a href='http://zoomquilt.org/' target='_blank'>Zoom Quilt</a>
                     <a href='https://pointerpointer.com/' target='_blank'> Pointer Pointer</a>
                     <a href='http://www.fallingfalling.com/' target='_blank'>Falling Falling</a>

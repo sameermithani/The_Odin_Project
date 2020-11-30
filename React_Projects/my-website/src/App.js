@@ -1,34 +1,21 @@
 import './App.css';
 import React from "react";
-import NavBar from "./components/navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Weather from './components/weather';
-import News from './components/news';
-import Side from './components/side';
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from './components/Home';
+import About from './components/About';
+import More from './components/More';
 
 const dotenv = require('dotenv').config()
 
 function App() {
 
   return (
-    <div id="main">
-      <NavBar/>
-      <div className='main-center'>
-        <div className='side-comp'>
-          <Side />
-        </div>
-        <div className='news-comp'>
-          <News />
-        </div>
-        <div className='weather-comp'>
-          <h1 style={{fontFamily: 'cursive'}}>Weather</h1>
-          <Weather />
-        </div>
-      </div>
-      <footer>
-        <p style={{marginTop: 'auto', verticalAlign: 'text-bottom'}}>Created by Sameer Mithani</p>
-      </footer>
-    </div>
+    <BrowserRouter>
+      <Route path='/' exact component={Home} />
+      <Route path='/about' exact component={About} />
+      <Route path='/more' exact component={More} />
+    </BrowserRouter>
   );
   
 }

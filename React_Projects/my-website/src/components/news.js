@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function News() {
+function News(props) {
 
     const api_key = process.env.REACT_APP_NEWS_API_KEY;
     const base = 'http://newsapi.org/v2/top-headlines?language=en&country=us';
